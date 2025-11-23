@@ -1,6 +1,9 @@
 // services/invoiceService.js
 'use server'
 
+let test = "This is for test push on dev";
+
+
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 const API_USERNAME = process.env.NEXT_PUBLIC_DEFAULT_USERNAME || '';
 const API_PASSWORD = process.env.NEXT_PUBLIC_DEFAULT_PASSWORD || '';
