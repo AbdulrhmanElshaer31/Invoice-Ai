@@ -74,6 +74,7 @@ export async function Login(email, password) {
         messages: result.messages || "Login failed. Please check your credentials."
       };
     }
+    console.log(result);
     
     // Return success response
     return {
