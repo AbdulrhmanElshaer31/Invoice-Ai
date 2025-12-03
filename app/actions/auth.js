@@ -2,7 +2,7 @@
 
 // Login function that calls the API
 export async function Login(email, password) {
-  const loginUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/v1/Account/Login`;
+  const loginUrl = `https://wize-invoice-dev-api.octaprimetech.com/api/v1/Account/Login`;
   
   try {
     const response = await fetch(loginUrl, {
