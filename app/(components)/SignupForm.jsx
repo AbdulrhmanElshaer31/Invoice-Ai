@@ -93,7 +93,7 @@ export default function SignUpForm() {
             />
             <button
               type="button"
-              className='absolute right-2 top-1/2 -translate-y-1/2 px-2.5 py-1 bg-slate-900 text-white text-[10px] font-bold rounded-md hover:bg-slate-800 transition-all duration-300 hover:scale-105'
+              className='absolute right-2 top-1/2 -translate-y-1/2 px-2.5 py-1 bg-slate-900 text-white text-[10px] font-bold rounded hover:bg-slate-800 transition-all duration-300 hover:scale-105'
             >
               Verify
             </button>
