@@ -284,6 +284,8 @@ export  async function resetPassword(payload) {
       body:JSON.stringify(payload)
     })
     const response = await request.json();
+    console.log(response);
+    
     if(!request.ok) {
       return{
         success: false,
@@ -292,7 +294,7 @@ export  async function resetPassword(payload) {
     }
     return  {
         success: response.isSuccess,
-        messages: response.messages || ["Password Resets Succsefully Return To Login."]
+        messages:  ["Password Resets Succsefully Return To Login."] || response.messages 
     }
   }catch (err) {
     console.error("Reset Password Error: ",err);

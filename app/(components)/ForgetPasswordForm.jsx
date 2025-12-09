@@ -119,10 +119,9 @@ export default function ForgetPasswordForm() {
     setMessage('');
 
     const payload = {
-      email,
-      otp,
-      newPassword,
-      confirmNewPassword: confirmPassword
+        "username":email,
+        "newPassword":newPassword,
+        "confirmpassword":confirmPassword
     };
 
     try {
@@ -167,7 +166,7 @@ export default function ForgetPasswordForm() {
 
       {/* MESSAGE BANNER */}
       {message && (
-        <div className={`p-3 rounded-lg border-2 flex items-center gap-2 transition-all duration-300 ${
+        <div className={`p-3 rounded border-2 flex items-center gap-2 transition-all duration-300 ${
           messageType === 'success' 
             ? 'bg-green-50 border-green-200 text-green-800' 
             : 'bg-red-50 border-red-200 text-red-800'
@@ -198,7 +197,7 @@ export default function ForgetPasswordForm() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               disabled={otpVerified || loadingOtp}
-              className={`border-2 p-3.5 pr-20 rounded-xl outline-none bg-white/70 backdrop-blur-sm
+              className={`border-2 p-3.5 pr-20 rounded  outline-none bg-white/70 backdrop-blur-sm
               hover:border-slate-400 hover:bg-white
               focus:border-slate-600 focus:ring-4 focus:ring-slate-600/10 focus:bg-white
               disabled:opacity-50 disabled:cursor-not-allowed
@@ -211,7 +210,7 @@ export default function ForgetPasswordForm() {
                 type="button"
                 onClick={handleSendOtp}
                 disabled={!canSendOtp || loadingOtp}
-                className='absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-slate-900 text-white text-xs font-bold rounded-lg hover:bg-slate-800 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center gap-1'
+                className='absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-slate-900 text-white text-xs font-bold rounded hover:bg-slate-800 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center gap-1'
               >
                 {loadingOtp ? (
                   <>
@@ -243,7 +242,7 @@ export default function ForgetPasswordForm() {
                 onChange={(e) => setOtp(e.target.value)}
                 disabled={loadingVerify}
                 maxLength={6}
-                className='border-2 border-slate-200 p-3.5 pr-24 rounded-xl outline-none bg-white/70 backdrop-blur-sm
+                className='border-2 border-slate-200 p-3.5 pr-24 rounded outline-none bg-white/70 backdrop-blur-sm
                 hover:border-slate-400 hover:bg-white
                 focus:border-slate-600 focus:ring-4 focus:ring-slate-600/10 focus:bg-white
                 disabled:opacity-50 disabled:cursor-not-allowed
@@ -254,7 +253,7 @@ export default function ForgetPasswordForm() {
                 type="button"
                 onClick={handleVerifyOtp}
                 disabled={!otp || loadingVerify}
-                className='absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-slate-900 text-white text-xs font-bold rounded-lg hover:bg-slate-800 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center gap-1'
+                className='absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-slate-900 text-white text-xs font-bold rounded hover:bg-slate-800 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center gap-1'
               >
                 {loadingVerify ? (
                   <>
@@ -282,7 +281,7 @@ export default function ForgetPasswordForm() {
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                   disabled={loadingReset}
-                  className='border-2 border-slate-200 p-3.5 rounded-xl outline-none bg-white/70 backdrop-blur-sm
+                  className='border-2 border-slate-200 p-3.5 rounded outline-none bg-white/70 backdrop-blur-sm
                   hover:border-slate-400 hover:bg-white
                   focus:border-slate-600 focus:ring-4 focus:ring-slate-600/10 focus:bg-white
                   disabled:opacity-50 disabled:cursor-not-allowed
@@ -312,7 +311,7 @@ export default function ForgetPasswordForm() {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   disabled={loadingReset}
-                  className='border-2 border-slate-200 p-3.5 rounded-xl outline-none bg-white/70 backdrop-blur-sm
+                  className='border-2 border-slate-200 p-3.5 rounded outline-none bg-white/70 backdrop-blur-sm
                   hover:border-slate-400 hover:bg-white
                   focus:border-slate-600 focus:ring-4 focus:ring-slate-600/10 focus:bg-white
                   disabled:opacity-50 disabled:cursor-not-allowed
@@ -343,7 +342,7 @@ export default function ForgetPasswordForm() {
           <button 
             onClick={handleSendOtp}
             disabled={!canSendOtp || loadingOtp}
-            className='group relative w-full font-bold text-white p-3 bg-linear-to-r from-slate-900 via-slate-800 to-slate-900 rounded-xl transition-all duration-500 shadow-lg shadow-slate-900/30 hover:shadow-xl hover:shadow-slate-900/40 transform hover:-translate-y-0.5 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 flex items-center justify-center gap-2'
+            className='group relative w-full font-bold text-white p-3 bg-linear-to-r from-slate-900 via-slate-800 to-slate-900 rounded transition-all duration-500 shadow-lg shadow-slate-900/30 hover:shadow-xl hover:shadow-slate-900/40 transform hover:-translate-y-0.5 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 flex items-center justify-center gap-2'
           >
             {loadingOtp ? (
               <>
@@ -361,7 +360,7 @@ export default function ForgetPasswordForm() {
           <button 
             onClick={handleResetPassword}
             disabled={!doPasswordsMatch || !isPasswordValid || loadingReset}
-            className='group relative w-full font-bold text-white p-3 bg-linear-to-r from-slate-900 via-slate-800 to-slate-900 rounded-xl transition-all duration-500 shadow-lg shadow-slate-900/30 hover:shadow-xl hover:shadow-slate-900/40 transform hover:-translate-y-0.5 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 flex items-center justify-center gap-2'
+            className='group relative w-full font-bold text-white p-3 bg-linear-to-r from-slate-900 via-slate-800 to-slate-900 rounded transition-all duration-500 shadow-lg shadow-slate-900/30 hover:shadow-xl hover:shadow-slate-900/40 transform hover:-translate-y-0.5 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 flex items-center justify-center gap-2'
           >
             {loadingReset ? (
               <>
