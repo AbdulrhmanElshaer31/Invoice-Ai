@@ -5,6 +5,7 @@ const publicRoutes = [
   "/login",
   "/sign-up",
   "/forget-password",
+  "/landing",
 ];
 
 export function middleware(request) {
