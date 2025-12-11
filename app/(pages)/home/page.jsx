@@ -95,87 +95,92 @@ function HomePage() {
   };
 
   return (
-    <div className="upload-invoice-page">
-      {/* Header Section */}
-      <div className="header-section">
-        <div className="header-content">
-          <h1 className="page-title">Upload Invoice</h1>
-          <p className="page-subtitle">
-            Upload your invoice files for automatic AI-powered processing and
-            data extraction
-          </p>
-        </div>
-        <button className="view-invoices-btn">
-          View Invoices
-          <ArrowRight className="arrow-icon" size={16} />
-        </button>
-      </div>
-
-      {/* Upload Status Message */}
-      {uploadStatus && (
-        <div className={`upload-status ${uploadStatus.type}`}>
-          {uploadStatus.message}
-        </div>
-      )}
-
-      {/* Main Upload Area */}
-      <div
-        className={`upload-area ${isDragging ? "dragging" : ""} ${
-          isUploading ? "uploading" : ""
-        }`}
-        onDragOver={handleDragOver}
-        onDragLeave={handleDragLeave}
-        onDrop={handleDrop}
-      >
-        <div className="upload-content">
-          {isUploading ? (
-            <>
-              <div className="upload-icon-wrapper">
-                <Upload className="upload-icon" size={32} />
-              </div>
-              <h2 className="upload-heading">Uploading...</h2>
-              <p className="upload-description">
-                Please wait while we process your file.
+    <div className="page-shell">
+      <div className="page-content">
+        <div className="glass-panel p-8 md:p-12 space-y-8">
+          {/* Header Section */}
+          <div className="header-section">
+            <div className="header-content">
+              <h1 className="page-title">Upload Invoice</h1>
+              <p className="page-subtitle">
+                Upload your invoice files for automatic AI-powered processing
+                and data extraction
               </p>
-            </>
-          ) : (
-            <>
-              {/* Upload Icon */}
-              <div className="upload-icon-wrapper">
-                <Upload className="upload-icon" size={32} />
-              </div>
+            </div>
+            <button className="view-invoices-btn">
+              View Invoices
+              <ArrowRight className="arrow-icon" size={16} />
+            </button>
+          </div>
 
-              {/* Heading */}
-              <h2 className="upload-heading">Upload Invoice Files</h2>
-
-              {/* Description */}
-              <p className="upload-description">
-                Drag and drop your invoice files here, or click to browse.
-                Supports PDF, JPG, PNG and other document formats.
-              </p>
-
-              {/* Upload Button */}
-              <label className="upload-button-label">
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  className="file-input"
-                  accept=".pdf,.jpg,.jpeg,.png"
-                  onChange={handleFileSelect}
-                  disabled={isUploading}
-                />
-                <div className="upload-button">
-                  <Plus className="plus-icon" size={20} />
-                  Upload Invoice
-                </div>
-              </label>
-
-              {/* File Info */}
-              <p className="file-info">
-                Maximum file size: 10MB • Supported formats: PDF, JPG, PNG, JPEG
-              </p>
-            </>
+          {/* Upload Status Message */}
+          {uploadStatus && (
+            <div className={`upload-status ${uploadStatus.type}`}>
+              {uploadStatus.message}
+            </div>
           )}
+
+          {/* Main Upload Area */}
+          <div
+            className={`upload-area ${isDragging ? "dragging" : ""} ${
+              isUploading ? "uploading" : ""
+            }`}
+            onDragOver={handleDragOver}
+            onDragLeave={handleDragLeave}
+            onDrop={handleDrop}
+          >
+            <div className="upload-content">
+              {isUploading ? (
+                <>
+                  <div className="upload-icon-wrapper">
+                    <Upload className="upload-icon" size={32} />
+                  </div>
+                  <h2 className="upload-heading">Uploading...</h2>
+                  <p className="upload-description">
+                    Please wait while we process your file.
+                  </p>
+                </>
+              ) : (
+                <>
+                  {/* Upload Icon */}
+                  <div className="upload-icon-wrapper">
+                    <Upload className="upload-icon" size={32} />
+                  </div>
+
+                  {/* Heading */}
+                  <h2 className="upload-heading">Upload Invoice Files</h2>
+
+                  {/* Description */}
+                  <p className="upload-description">
+                    Drag and drop your invoice files here, or click to browse.
+                    Supports PDF, JPG, PNG and other document formats.
+                  </p>
+
+                  {/* Upload Button */}
+                  <label className="upload-button-label">
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      className="file-input"
+                      accept=".pdf,.jpg,.jpeg,.png"
+                      onChange={handleFileSelect}
+                      disabled={isUploading}
+                    />
+                    <div className="upload-button">
+                      <Plus className="plus-icon" size={20} />
+                      Upload Invoice
+                    </div>
+                  </label>
+
+                  {/* File Info */}
+                  <p className="file-info">
+                    Maximum file size: 10MB • Supported formats: PDF, JPG, PNG,
+                    JPEG
+                  </p>
+                </>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>

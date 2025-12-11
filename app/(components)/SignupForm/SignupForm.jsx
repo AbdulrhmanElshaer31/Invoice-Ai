@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Eye, EyeOff, Loader2, CheckCircle2, XCircle } from 'lucide-react';
 import { FcGoogle } from "react-icons/fc";
-import { requestOtp, validateOtop, SignUp } from '../actions/auth';
+import { requestOtp, validateOtop, SignUp } from '../../actions/auth';
 
 export default function SignUpForm() {
   const router = useRouter();
@@ -435,3 +435,4 @@ export default function SignUpForm() {
     </div>
   );
 }
+

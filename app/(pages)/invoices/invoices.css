@@ -1,88 +1,82 @@
-.invoices-container {
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0;
+.invoices-hero {
+    padding: 24px;
 }
 
 /* Header Section */
 .invoices-header {
-    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 18px;
 }
 
 .invoices-title {
     font-size: 32px;
-    font-weight: 600;
-    color: #1e3a8a;
-    margin: 0 0 16px 0;
+    font-weight: 800;
+    color: #f8fafc;
+    margin: 10px 0 6px;
+}
+
+.invoices-subtitle {
+    color: #cbd5e1;
+    margin: 0;
+    font-size: 15px;
 }
 
 .info-banner {
-    background-color: #dbeafe;
-    color: #1e40af;
+    background: rgba(255, 255, 255, 0.04);
+    color: #e2e8f0;
     padding: 12px 16px;
-    border-radius: 8px;
+    border-radius: 14px;
     font-size: 14px;
-    border: 1px solid #bfdbfe;
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Navigation and Action Bar */
 .nav-action-bar {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-    gap: 16px;
+    flex-direction: column;
+    gap: 18px;
+    padding: 18px;
 }
 
 .tabs-container {
     display: flex;
-    gap: 0;
-    background-color: #f3f4f6;
-    border-radius: 8px;
-    padding: 4px;
+    gap: 6px;
+    background-color: rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .tab {
-    padding: 10px 24px;
+    padding: 12px 18px;
     background-color: transparent;
     border: none;
-    border-radius: 6px;
+    border-radius: 10px;
     font-size: 14px;
-    font-weight: 500;
-    color: #6b7280;
+    font-weight: 700;
+    color: #cbd5e1;
     cursor: pointer;
     transition: all 0.2s;
 }
 
 .tab:hover {
-    color: #374151;
+    color: #f8fafc;
 }
 
 .tab.active {
-    background-color: white;
-    color: #171717;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.12);
+    color: #f8fafc;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
 }
 
-.refresh-btn-nav {
+.search-add-inline {
     display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    background-color: #3b82f6;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    white-space: nowrap;
-}
-
-.refresh-btn-nav:hover {
-    background-color: #2563eb;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
 }
 
 /* Status Metrics Grid */
@@ -90,18 +84,17 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 16px;
-    margin-bottom: 24px;
 }
 
 .status-card {
-    background-color: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
     padding: 16px;
     display: flex;
     align-items: center;
     gap: 12px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.38);
 }
 
 .status-icon-wrapper {
@@ -110,80 +103,80 @@
     justify-content: center;
     width: 40px;
     height: 40px;
-    border-radius: 8px;
+    border-radius: 12px;
     flex-shrink: 0;
 }
 
 .status-card.total .status-icon-wrapper {
-    background-color: #dbeafe;
+    background-color: rgba(56, 189, 248, 0.16);
 }
 
 .status-card.total .status-icon {
-    color: #3b82f6;
+    color: #38bdf8;
 }
 
 .status-card.total .status-value {
-    color: #3b82f6;
+    color: #38bdf8;
 }
 
 .status-card.processed .status-icon-wrapper {
-    background-color: #d1fae5;
+    background-color: rgba(52, 211, 153, 0.16);
 }
 
 .status-card.processed .status-icon {
-    color: #10b981;
+    color: #34d399;
 }
 
 .status-card.processed .status-value {
-    color: #10b981;
+    color: #34d399;
 }
 
 .status-card.processing .status-icon-wrapper {
-    background-color: #dbeafe;
+    background-color: rgba(56, 189, 248, 0.16);
 }
 
 .status-card.processing .status-icon {
-    color: #3b82f6;
+    color: #38bdf8;
 }
 
 .status-card.processing .status-value {
-    color: #3b82f6;
+    color: #38bdf8;
 }
 
 .status-card.pending .status-icon-wrapper {
-    background-color: #fef3c7;
+    background-color: rgba(234, 179, 8, 0.16);
 }
 
 .status-card.pending .status-icon {
-    color: #f59e0b;
+    color: #facc15;
 }
 
 .status-card.pending .status-value {
-    color: #f59e0b;
+    color: #facc15;
 }
 
 .status-card.failed .status-icon-wrapper {
-    background-color: #fee2e2;
+    background-color: rgba(248, 113, 113, 0.14);
 }
 
 .status-card.failed .status-icon {
-    color: #ef4444;
+    color: #f87171;
 }
 
 .status-card.failed .status-value {
-    color: #ef4444;
+    color: #f87171;
 }
 
 .status-card.skipped .status-icon-wrapper {
-    background-color: #f3f4f6;
+    background-color: rgba(226, 232, 240, 0.12);
 }
 
 .status-card.skipped .status-icon {
-    color: #6b7280;
+    color: #cbd5e1;
 }
 
 .status-card.skipped .status-value {
-    color: #6b7280;
+    color: #cbd5e1;
 }
 
 .status-info {
@@ -192,13 +185,14 @@
 
 .status-label {
     font-size: 12px;
-    color: #6b7280;
+    color: #cbd5e1;
     margin-bottom: 4px;
 }
 
 .status-value {
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 22px;
+    font-weight: 800;
+    color: #f8fafc;
 }
 
 /* Search and Add Section */
@@ -225,51 +219,32 @@
 .search-input {
     width: 100%;
     padding: 12px 16px 12px 40px;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
     font-size: 14px;
-    color: #374151;
-    transition: border-color 0.2s;
+    color: #e2e8f0;
+    background: rgba(15, 23, 42, 0.4);
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
 .search-input:focus {
     outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    border-color: rgba(56, 189, 248, 0.55);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18);
+    background: rgba(15, 23, 42, 0.65);
 }
 
 .search-input::placeholder {
-    color: #9ca3af;
-}
-
-.new-invoice-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 100%;
-    padding: 14px 24px;
-    background-color: #3b82f6;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.new-invoice-btn:hover {
-    background-color: #2563eb;
+    color: #94a3b8;
 }
 
 /* Table Container */
 .table-container {
-    background-color: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
 }
 
 .files-table {
@@ -278,20 +253,20 @@
 }
 
 .files-table thead {
-    background-color: #f9fafb;
-    border-bottom: 1px solid #e5e7eb;
+    background-color: rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .files-table th {
-    padding: 12px 16px;
+    padding: 14px 16px;
     text-align: left;
     font-size: 14px;
-    font-weight: 600;
-    color: #374151;
+    font-weight: 700;
+    color: #e2e8f0;
 }
 
 .files-table tbody tr {
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .files-table tbody tr:last-child {
@@ -301,13 +276,13 @@
 .files-table td {
     padding: 12px 16px;
     font-size: 14px;
-    color: #6b7280;
+    color: #cbd5e1;
 }
 
 .empty-state {
     text-align: center;
     padding: 48px 16px !important;
-    color: #9ca3af;
+    color: #94a3b8;
     font-size: 16px;
 }
 
@@ -316,6 +291,20 @@
     .search-add-section {
         flex-direction: row;
         align-items: center;
+    }
+
+    .nav-action-bar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .search-add-inline {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        width: auto;
+        min-width: 360px;
     }
 
     .search-wrapper {
@@ -334,7 +323,6 @@
     }
 
     .nav-action-bar {
-        flex-direction: column;
         align-items: stretch;
     }
 

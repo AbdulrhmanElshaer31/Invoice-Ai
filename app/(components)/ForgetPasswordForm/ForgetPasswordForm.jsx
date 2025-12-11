@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Eye, EyeOff, Loader2, CheckCircle2, XCircle, Mail, Lock } from 'lucide-react';
-import { resetPswdOtp, validatePswdOtp, resetPassword } from '../actions/auth';
+import { resetPswdOtp, validatePswdOtp, resetPassword } from '../../actions/auth';
 
 export default function ForgetPasswordForm() {
   const router = useRouter();
@@ -395,3 +395,4 @@ export default function ForgetPasswordForm() {
     </div>
   );
 }
+

@@ -4,38 +4,180 @@
   /* ======================
      Light Theme
   ====================== */
-  --color-light-bg: rgb(227 227 227);             /* Light Mode - General background */
-  --color-light-card: rgb(255 255 255);           /* Light Mode - Card / Container background */
+  --color-light-bg: rgb(227 227 227);
+  /* Light Mode - General background */
+  --color-light-card: rgb(255 255 255);
+  /* Light Mode - Card / Container background */
 
-  --color-light-primary: rgb(27 60 83);           /* Light Mode - Primary button */
-  --color-light-primary-hover: rgb(35 76 106);    /* Light Mode - Primary button hover */
+  --color-light-primary: rgb(27 60 83);
+  /* Light Mode - Primary button */
+  --color-light-primary-hover: rgb(35 76 106);
+  /* Light Mode - Primary button hover */
 
-  --color-light-text-primary: rgb(27 60 83);      /* Light Mode - Primary text */
-  --color-light-text-secondary: rgb(69 104 130);  /* Light Mode - Secondary text */
+  --color-light-text-primary: rgb(27 60 83);
+  /* Light Mode - Primary text */
+  --color-light-text-secondary: rgb(69 104 130);
+  /* Light Mode - Secondary text */
 
-  --color-light-border: rgb(208 208 208);         /* Light Mode - Borders / Dividers */
-  --color-light-accent: rgb(35 76 106);           /* Light Mode - Icons / Accent color */
+  --color-light-border: rgb(208 208 208);
+  /* Light Mode - Borders / Dividers */
+  --color-light-accent: rgb(35 76 106);
+  /* Light Mode - Icons / Accent color */
 
   /* ======================
      Dark Theme
   ====================== */
-  --color-dark-bg: rgb(27 60 83);                 /* Dark Mode - General background */
-  --color-dark-card: rgb(35 76 106);             /* Dark Mode - Card / Container background */
+  --color-dark-bg: rgb(27 60 83);
+  /* Dark Mode - General background */
+  --color-dark-card: rgb(35 76 106);
+  /* Dark Mode - Card / Container background */
 
-  --color-dark-primary: rgb(69 104 130);         /* Dark Mode - Primary button */
-  --color-dark-primary-hover: rgb(27 60 83);     /* Dark Mode - Primary button hover */
+  --color-dark-primary: rgb(69 104 130);
+  /* Dark Mode - Primary button */
+  --color-dark-primary-hover: rgb(27 60 83);
+  /* Dark Mode - Primary button hover */
 
-  --color-dark-text-primary: rgb(227 227 227);   /* Dark Mode - Primary text */
-  --color-dark-text-secondary: rgb(69 104 130);  /* Dark Mode - Secondary text */
+  --color-dark-text-primary: rgb(227 227 227);
+  /* Dark Mode - Primary text */
+  --color-dark-text-secondary: rgb(69 104 130);
+  /* Dark Mode - Secondary text */
 
-  --color-dark-border: rgb(35 76 106);           /* Dark Mode - Borders / Dividers */
-  --color-dark-accent: rgb(227 227 227);         /* Dark Mode - Icons / Accent color */
+  --color-dark-border: rgb(35 76 106);
+  /* Dark Mode - Borders / Dividers */
+  --color-dark-accent: rgb(227 227 227);
+  /* Dark Mode - Icons / Accent color */
 }
 
 .bourder {
-   border-radius: 10px;
+  border-radius: 10px;
 }
 
 .link-decoration {
-   text-decoration: none;
+  text-decoration: none;
+}
+
+/* Shared dark hero shell inspired by auth screen */
+.page-shell {
+  min-height: 100vh;
+  padding: 32px 20px;
+  background: radial-gradient(circle at 15% 20%, rgba(100, 116, 139, 0.16), transparent 35%),
+    radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.12), transparent 38%),
+    radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.12), transparent 40%),
+    linear-gradient(135deg, #0b1220 0%, #0e1626 50%, #0a101b 100%);
+  color: #e2e8f0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.page-shell .page-content {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(14px);
+}
+
+.card-muted {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #0f172a, #0b1220);
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  transition: all 0.25s ease;
+}
+
+.primary-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.outline-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(15, 23, 42, 0.4);
+  color: #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.outline-input::placeholder {
+  color: #94a3b8;
+}
+
+.outline-input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.32);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.16);
+}
+
+/* Light auth card (matches provided mock) */
+.auth-card {
+  background: #f6f7fb;
+  color: #0f172a;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25), 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 36px;
+}
+
+.auth-card h1,
+.auth-card h2,
+.auth-card h3 {
+  color: #0f172a;
+}
+
+.auth-card p {
+  color: #475569;
+}
+
+@media (max-width: 640px) {
+  .auth-card {
+    padding: 24px;
+    border-radius: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-shell {
+    padding: 24px 16px;
+    align-items: stretch;
+  }
+
+  .glass-panel {
+    border-radius: 22px;
+  }
 }

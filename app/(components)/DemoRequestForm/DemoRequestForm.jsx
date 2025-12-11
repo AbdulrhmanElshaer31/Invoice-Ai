@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import demoRequest from "../actions/demoRequest";
+import demoRequest from "../../actions/demoRequest";
 
 export default function DemoRequestForm() {
   // Form states
@@ -258,3 +258,4 @@ export default function DemoRequestForm() {
     </div>
   );
 }
+
