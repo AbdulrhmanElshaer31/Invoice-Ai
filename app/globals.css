@@ -1,54 +1,41 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* ======================
+     Light Theme
+  ====================== */
+  --color-light-bg: rgb(227 227 227);             /* Light Mode - General background */
+  --color-light-card: rgb(255 255 255);           /* Light Mode - Card / Container background */
+
+  --color-light-primary: rgb(27 60 83);           /* Light Mode - Primary button */
+  --color-light-primary-hover: rgb(35 76 106);    /* Light Mode - Primary button hover */
+
+  --color-light-text-primary: rgb(27 60 83);      /* Light Mode - Primary text */
+  --color-light-text-secondary: rgb(69 104 130);  /* Light Mode - Secondary text */
+
+  --color-light-border: rgb(208 208 208);         /* Light Mode - Borders / Dividers */
+  --color-light-accent: rgb(35 76 106);           /* Light Mode - Icons / Accent color */
+
+  /* ======================
+     Dark Theme
+  ====================== */
+  --color-dark-bg: rgb(27 60 83);                 /* Dark Mode - General background */
+  --color-dark-card: rgb(35 76 106);             /* Dark Mode - Card / Container background */
+
+  --color-dark-primary: rgb(69 104 130);         /* Dark Mode - Primary button */
+  --color-dark-primary-hover: rgb(27 60 83);     /* Dark Mode - Primary button hover */
+
+  --color-dark-text-primary: rgb(227 227 227);   /* Dark Mode - Primary text */
+  --color-dark-text-secondary: rgb(69 104 130);  /* Dark Mode - Secondary text */
+
+  --color-dark-border: rgb(35 76 106);           /* Dark Mode - Borders / Dividers */
+  --color-dark-accent: rgb(227 227 227);         /* Dark Mode - Icons / Accent color */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.bourder {
+   border-radius: 10px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ffffff;
-  }
-}
-
-body {
-  background: var(--foreground);
-  color: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* Content area with fixed sidebar */
-.app-content {
-  min-height: 100vh;
-  padding: 24px;
-  transition: margin-left 0.3s ease;
-}
-
-/* Make room for the sidebar on desktop */
-@media (min-width: 992px) {
-  .app-content {
-    margin-left: 280px;
-    transition: margin-left 0.3s ease;
-  }
-
-  /* Adjust content when sidebar is collapsed */
-  body.sidebar-collapsed .app-content {
-    margin-left: 72px;
-  }
-}
-
-/* Ensure offcanvas sidebar is always visible on desktop */
-@media (min-width: 992px) {
-  .offcanvas-lg.show {
-    visibility: visible;
-    transform: translateX(0);
-  }
+.link-decoration {
+   text-decoration: none;
 }
