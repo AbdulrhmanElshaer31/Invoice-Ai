@@ -5,9 +5,27 @@ import {
   Clock,
   DollarSign,
   BarChart3,
-  TrendingUp,
   RefreshCw,
+  FileText,
+  CheckCircle,
+  ArrowUp,
+  ArrowDown,
 } from "lucide-react";
+import {
+  LineChart,
+  Line,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell,
+} from "recharts";
 import "./dashboard.css";
 
 function Dashboard() {
@@ -20,6 +38,52 @@ function Dashboard() {
     day: "numeric",
   };
   const formattedDate = currentDate.toLocaleDateString("en-US", options);
+
+  // Monthly Spend Trend Data
+  const monthlySpendData = [
+    { month: "Jan", spend: 3200 },
+    { month: "Feb", spend: 4200 },
+    { month: "Mar", spend: 3800 },
+    { month: "Apr", spend: 4500 },
+    { month: "May", spend: 5200 },
+    { month: "Jun", spend: 4800 },
+    { month: "Jul", spend: 5600 },
+    { month: "Aug", spend: 5900 },
+    { month: "Sep", spend: 6200 },
+    { month: "Oct", spend: 6500 },
+    { month: "Nov", spend: 6800 },
+    { month: "Dec", spend: 7000 },
+  ];
+
+  // Top Vendors Data
+  const vendorsData = [
+    { name: "Acme Corp", spend: 8500 },
+    { name: "TechSupply", spend: 6200 },
+    { name: "Office Pro", spend: 5800 },
+    { name: "Cloud Services", spend: 4800 },
+    { name: "Marketing", spend: 7200 },
+  ];
+
+  // Expense Types Data
+  const expenseTypesData = [
+    { type: "Software", spend: 18000 },
+    { type: "Hardware", spend: 15000 },
+    { type: "Services", spend: 12000 },
+    { type: "Marketing", spend: 8000 },
+    { type: "Office", spend: 5000 },
+  ];
+
+  // Cost Center Data
+  const costCenterData = [
+    { name: "Engineering", value: 15000, color: "#60a5fa" },
+    { name: "Sales", value: 12000, color: "#f97316" },
+    { name: "Marketing", value: 10000, color: "#ec4899" },
+    { name: "Operations", value: 8000, color: "#10b981" },
+    { name: "HR", value: 6000, color: "#a855f7" },
+    { name: "Finance", value: 4231, color: "#60a5fa" },
+  ];
+
+  const COLORS = costCenterData.map((item) => item.color);
 
   return (
     <div className="page-shell">
@@ -61,72 +125,227 @@ function Dashboard() {
           <div className="metrics-grid">
             <div className="metric-card">
               <div className="metric-header">
-                <DollarSign className="metric-icon" size={20} />
-                <h3 className="metric-title">Total Expenses</h3>
+                <div className="metric-icon-wrapper green">
+                  <DollarSign className="metric-icon" size={20} />
+                </div>
+                <h3 className="metric-title">Total Spend</h3>
               </div>
-              <div className="metric-value">$0</div>
-              <div className="metric-change positive">0% from last period</div>
+              <div className="metric-value">$45,231.89</div>
+              <div className="metric-change positive">
+                <ArrowUp size={14} />
+                +20.1%
+              </div>
             </div>
 
             <div className="metric-card">
               <div className="metric-header">
-                <BarChart3 className="metric-icon" size={20} />
-                <h3 className="metric-title">Total Transactions</h3>
+                <div className="metric-icon-wrapper purple">
+                  <FileText className="metric-icon" size={20} />
+                </div>
+                <h3 className="metric-title">Total Invoices</h3>
               </div>
-              <div className="metric-value">0</div>
-              <div className="metric-change positive">0% from last period</div>
+              <div className="metric-value">1,234</div>
+              <div className="metric-change positive">
+                <ArrowUp size={14} />
+                +15.3%
+              </div>
             </div>
 
             <div className="metric-card">
               <div className="metric-header">
-                <Clock className="metric-icon" size={20} />
-                <h3 className="metric-title">Active Cost Centers</h3>
+                <div className="metric-icon-wrapper orange">
+                  <Clock className="metric-icon" size={20} />
+                </div>
+                <h3 className="metric-title">Pending Payment</h3>
               </div>
-              <div className="metric-value">0</div>
-              <div className="metric-change positive">0% from last period</div>
+              <div className="metric-value">$8,492.00</div>
+              <div className="metric-change negative">
+                <ArrowDown size={14} />
+                -4.5%
+              </div>
             </div>
 
             <div className="metric-card">
               <div className="metric-header">
-                <TrendingUp className="metric-icon" size={20} />
-                <h3 className="metric-title">Average per Transaction</h3>
+                <div className="metric-icon-wrapper teal">
+                  <CheckCircle className="metric-icon" size={20} />
+                </div>
+                <h3 className="metric-title">Processed This Month</h3>
               </div>
-              <div className="metric-value">$0</div>
-              <div className="metric-change positive">0% from last period</div>
+              <div className="metric-value">348</div>
+              <div className="metric-change positive">
+                <ArrowUp size={14} />
+                +32.7%
+              </div>
             </div>
           </div>
 
-          {/* Charts Section */}
+          {/* Charts Section - First Row */}
           <div className="charts-grid">
-            {/* Cost Center Distribution Panel */}
+            {/* Monthly Spend Trend */}
             <div className="chart-panel">
               <div className="chart-header">
                 <div className="chart-title-section">
-                  <h2 className="chart-title">Cost Center Distribution</h2>
-                  <p className="chart-subtitle">
-                    Expense breakdown by cost center
-                  </p>
+                  <h2 className="chart-title">Monthly Spend Trend</h2>
                 </div>
-                <button className="manage-btn">Manage Cost Centers</button>
               </div>
-              <div className="chart-content empty">
-                <Clock className="empty-icon" size={64} />
-                <p className="empty-text">No Cost Center Data</p>
+              <div className="chart-content">
+                <ResponsiveContainer width="100%" height={300}>
+                  <LineChart data={monthlySpendData}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                    <XAxis
+                      dataKey="month"
+                      stroke="#94a3b8"
+                      style={{ fontSize: "12px" }}
+                    />
+                    <YAxis
+                      stroke="#94a3b8"
+                      style={{ fontSize: "12px" }}
+                      domain={[0, 8000]}
+                      ticks={[0, 2000, 4000, 6000, 8000]}
+                    />
+                    <Tooltip
+                      contentStyle={{
+                        backgroundColor: "#1e293b",
+                        border: "1px solid #334155",
+                        borderRadius: "8px",
+                        color: "#e2e8f0",
+                      }}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="spend"
+                      stroke="#60a5fa"
+                      strokeWidth={2}
+                      dot={{ fill: "#60a5fa", r: 4 }}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
               </div>
             </div>
 
-            {/* Expense Types Panel */}
+            {/* Top Vendors by Spend */}
             <div className="chart-panel">
               <div className="chart-header">
                 <div className="chart-title-section">
-                  <h2 className="chart-title">Expense Types</h2>
-                  <p className="chart-subtitle">Spending by expense category</p>
+                  <h2 className="chart-title">Top Vendors by Spend</h2>
                 </div>
-                <button className="manage-btn">Manage Expense Types</button>
               </div>
-              <div className="chart-content empty">
-                <BarChart3 className="empty-icon" size={64} />
-                <p className="empty-text">No Expense Types Data</p>
+              <div className="chart-content">
+                <ResponsiveContainer width="100%" height={300}>
+                  <BarChart data={vendorsData}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                    <XAxis
+                      dataKey="name"
+                      stroke="#94a3b8"
+                      style={{ fontSize: "12px" }}
+                      angle={-45}
+                      textAnchor="end"
+                      height={80}
+                    />
+                    <YAxis
+                      stroke="#94a3b8"
+                      style={{ fontSize: "12px" }}
+                      domain={[0, 10000]}
+                      ticks={[0, 2500, 5000, 7500, 10000]}
+                    />
+                    <Tooltip
+                      contentStyle={{
+                        backgroundColor: "#1e293b",
+                        border: "1px solid #334155",
+                        borderRadius: "8px",
+                        color: "#e2e8f0",
+                      }}
+                    />
+                    <Bar dataKey="spend" fill="#60a5fa" radius={[8, 8, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          </div>
+
+          {/* Charts Section - Second Row */}
+          <div className="charts-grid">
+            {/* Spend by Expense Type */}
+            <div className="chart-panel">
+              <div className="chart-header">
+                <div className="chart-title-section">
+                  <h2 className="chart-title">Spend by Expense Type</h2>
+                </div>
+              </div>
+              <div className="chart-content">
+                <ResponsiveContainer width="100%" height={300}>
+                  <BarChart
+                    data={expenseTypesData}
+                    layout="vertical"
+                    margin={{ left: 20, right: 20 }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                    <XAxis
+                      type="number"
+                      stroke="#94a3b8"
+                      style={{ fontSize: "12px" }}
+                    />
+                    <YAxis
+                      type="category"
+                      dataKey="type"
+                      stroke="#94a3b8"
+                      style={{ fontSize: "12px" }}
+                      width={100}
+                    />
+                    <Tooltip
+                      contentStyle={{
+                        backgroundColor: "#1e293b",
+                        border: "1px solid #334155",
+                        borderRadius: "8px",
+                        color: "#e2e8f0",
+                      }}
+                    />
+                    <Bar dataKey="spend" fill="#fbbf24" radius={[0, 8, 8, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+
+            {/* Spend by Cost Center */}
+            <div className="chart-panel">
+              <div className="chart-header">
+                <div className="chart-title-section">
+                  <h2 className="chart-title">Spend by Cost Center</h2>
+                </div>
+              </div>
+              <div className="chart-content">
+                <ResponsiveContainer width="100%" height={300}>
+                  <PieChart>
+                    <Pie
+                      data={costCenterData}
+                      cx="50%"
+                      cy="50%"
+                      labelLine={false}
+                      label={({ name, percent }) =>
+                        `${name} ${(percent * 100).toFixed(0)}%`
+                      }
+                      outerRadius={100}
+                      fill="#8884d8"
+                      dataKey="value"
+                    >
+                      {costCenterData.map((entry, index) => (
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={COLORS[index % COLORS.length]}
+                        />
+                      ))}
+                    </Pie>
+                    <Tooltip
+                      contentStyle={{
+                        backgroundColor: "#1e293b",
+                        border: "1px solid #334155",
+                        borderRadius: "8px",
+                        color: "#e2e8f0",
+                      }}
+                    />
+                  </PieChart>
+                </ResponsiveContainer>
               </div>
             </div>
           </div>

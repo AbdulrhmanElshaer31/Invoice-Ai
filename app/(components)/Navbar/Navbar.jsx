@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   Menu,
   X,
@@ -10,30 +10,32 @@ import {
   FileText,
   DollarSign,
   LogIn,
+  LogOut,
   UserPlus,
   LayoutDashboard,
   Building2,
   Sparkles,
 } from "lucide-react";
+import { Logout } from "../../actions/auth.js";
+import { getSession } from "../../actions/session.js";
 import "./Navbar.css";
 
 const mainNavItems = [
-  { name: "Home", path: "/home", icon: Home },
+  { name: "Upload", path: "/home", icon: Home },
   { name: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
   { name: "Invoices", path: "/invoices", icon: FileText },
   { name: "Cost Center", path: "/cost-center", icon: Building2 },
   { name: "Expense Type", path: "/expense-type", icon: DollarSign },
 ];
 
-const authNavItems = [
-  { name: "Login", path: "/login", icon: LogIn },
-  { name: "Sign Up", path: "/sign-up", icon: UserPlus },
-];
+// Auth items will be dynamically set based on login state
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,6 +45,20 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Check if user is logged in
+  useEffect(() => {
+    const checkSession = async () => {
+      try {
+        const session = await getSession();
+        setIsLoggedIn(!!session);
+      } catch (error) {
+        console.error("Error checking session:", error);
+        setIsLoggedIn(false);
+      }
+    };
+    checkSession();
+  }, [pathname]);
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -50,6 +66,30 @@ export default function Navbar() {
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
   };
+
+  const handleLogout = async () => {
+    try {
+      await Logout();
+      setIsLoggedIn(false);
+      closeMobileMenu();
+      router.push("/login");
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
+
+  // Dynamic auth items based on login state
+  const authNavItems = isLoggedIn
+    ? [{ name: "Log out", path: "/logout", icon: LogOut }]
+    : [
+        { name: "Login", path: "/login", icon: LogIn },
+        { name: "Sign Up", path: "/sign-up", icon: UserPlus },
+      ];
+
+  // Hide navbar on login page
+  if (pathname === "/login") {
+    return null;
+  }
 
   return (
     <>
@@ -87,6 +127,21 @@ export default function Navbar() {
               {authNavItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = pathname === item.path;
+
+                // Handle logout separately
+                if (item.name === "Log out") {
+                  return (
+                    <button
+                      key={item.path}
+                      onClick={handleLogout}
+                      className="auth-link"
+                    >
+                      <Icon size={16} />
+                      <span>{item.name}</span>
+                    </button>
+                  );
+                }
+
                 return (
                   <Link
                     key={item.path}
@@ -159,6 +214,21 @@ export default function Navbar() {
               {authNavItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = pathname === item.path;
+
+                // Handle logout separately
+                if (item.name === "Log out") {
+                  return (
+                    <button
+                      key={item.path}
+                      onClick={handleLogout}
+                      className="mobile-link"
+                    >
+                      <Icon size={18} />
+                      <span>{item.name}</span>
+                    </button>
+                  );
+                }
+
                 return (
                   <Link
                     key={item.path}

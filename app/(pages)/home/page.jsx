@@ -1,15 +1,52 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { Upload, ArrowRight, Plus } from "lucide-react";
+import Link from "next/link";
+import {
+  Upload,
+  Zap,
+  Clock,
+  FileText,
+  BarChart3,
+  History,
+  ArrowRight,
+} from "lucide-react";
 import { uploadInvoice } from "@/services/invoiceService";
 import "./home.css";
 
-function HomePage() {
+function UploadPage() {
   const [isDragging, setIsDragging] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadStatus, setUploadStatus] = useState(null);
   const fileInputRef = useRef(null);
+
+  // Sample data for recently uploaded invoices
+  const recentInvoices = [
+    {
+      id: 1,
+      fileName: "Invoice_2024_001.pdf",
+      vendor: "Acme Corp",
+      amount: "$1,234.56",
+      status: "Paid",
+      date: "2024-12-08",
+    },
+    {
+      id: 2,
+      fileName: "Invoice_2024_002.pdf",
+      vendor: "TechSupply Inc",
+      amount: "$892.00",
+      status: "Pending",
+      date: "2024-12-07",
+    },
+    {
+      id: 3,
+      fileName: "Invoice_2024_003.pdf",
+      vendor: "Office Pro",
+      amount: "$2,145.80",
+      status: "Paid",
+      date: "2024-12-06",
+    },
+  ];
 
   const handleDragOver = (e) => {
     e.preventDefault();
@@ -97,20 +134,47 @@ function HomePage() {
   return (
     <div className="page-shell">
       <div className="page-content">
-        <div className="glass-panel p-8 md:p-12 space-y-8">
+        <div className="upload-page-container">
           {/* Header Section */}
-          <div className="header-section">
-            <div className="header-content">
-              <h1 className="page-title">Upload Invoice</h1>
-              <p className="page-subtitle">
-                Upload your invoice files for automatic AI-powered processing
-                and data extraction
+          <div className="upload-header">
+            <h1 className="upload-main-title">Process Invoices with AI</h1>
+            <p className="upload-subtitle">
+              Upload your invoices and let artificial intelligence extract all
+              the data in seconds
+            </p>
+          </div>
+
+          {/* Three-Step Process Cards */}
+          <div className="process-steps">
+            <div className="process-card">
+              <div className="process-icon-wrapper">
+                <Upload className="process-icon" size={24} />
+              </div>
+              <h3 className="process-title">Upload Invoice</h3>
+              <p className="process-description">
+                Drag and drop or browse your PDF/image files
               </p>
             </div>
-            <button className="view-invoices-btn">
-              View Invoices
-              <ArrowRight className="arrow-icon" size={16} />
-            </button>
+
+            <div className="process-card">
+              <div className="process-icon-wrapper">
+                <Zap className="process-icon" size={24} />
+              </div>
+              <h3 className="process-title">AI Processing</h3>
+              <p className="process-description">
+                Our AI extracts all relevant data automatically
+              </p>
+            </div>
+
+            <div className="process-card">
+              <div className="process-icon-wrapper">
+                <Clock className="process-icon" size={24} />
+              </div>
+              <h3 className="process-title">Review & Save</h3>
+              <p className="process-description">
+                Verify extracted data and save to your system
+              </p>
+            </div>
           </div>
 
           {/* Upload Status Message */}
@@ -133,7 +197,7 @@ function HomePage() {
               {isUploading ? (
                 <>
                   <div className="upload-icon-wrapper">
-                    <Upload className="upload-icon" size={32} />
+                    <Upload className="upload-icon" size={48} />
                   </div>
                   <h2 className="upload-heading">Uploading...</h2>
                   <p className="upload-description">
@@ -144,16 +208,15 @@ function HomePage() {
                 <>
                   {/* Upload Icon */}
                   <div className="upload-icon-wrapper">
-                    <Upload className="upload-icon" size={32} />
+                    <Upload className="upload-icon" size={48} />
                   </div>
 
                   {/* Heading */}
-                  <h2 className="upload-heading">Upload Invoice Files</h2>
+                  <h2 className="upload-heading">Drop invoices here</h2>
 
                   {/* Description */}
                   <p className="upload-description">
-                    Drag and drop your invoice files here, or click to browse.
-                    Supports PDF, JPG, PNG and other document formats.
+                    or click to browse from your computer
                   </p>
 
                   {/* Upload Button */}
@@ -166,19 +229,103 @@ function HomePage() {
                       onChange={handleFileSelect}
                       disabled={isUploading}
                     />
-                    <div className="upload-button">
-                      <Plus className="plus-icon" size={20} />
-                      Upload Invoice
-                    </div>
+                    <button className="browse-files-button" type="button">
+                      Browse Files
+                    </button>
                   </label>
 
                   {/* File Info */}
                   <p className="file-info">
-                    Maximum file size: 10MB • Supported formats: PDF, JPG, PNG,
-                    JPEG
+                    Supports PDF, PNG, JPG (Max 10MB per file)
                   </p>
                 </>
               )}
+            </div>
+          </div>
+
+          {/* Navigation Cards */}
+          <div className="nav-cards-section">
+            <Link href="/invoices" className="nav-card nav-card-blue">
+              <div className="nav-card-icon-wrapper nav-card-icon-blue">
+                <FileText className="nav-card-icon" size={24} />
+              </div>
+              <div className="nav-card-content">
+                <h3 className="nav-card-title">View All Invoices</h3>
+                <p className="nav-card-description">Browse your invoice library</p>
+              </div>
+              <ArrowRight className="nav-card-arrow" size={20} />
+            </Link>
+
+            <Link href="/dashboard" className="nav-card nav-card-purple">
+              <div className="nav-card-icon-wrapper nav-card-icon-purple">
+                <BarChart3 className="nav-card-icon" size={24} />
+              </div>
+              <div className="nav-card-content">
+                <h3 className="nav-card-title">Dashboard</h3>
+                <p className="nav-card-description">View analytics and insights</p>
+              </div>
+              <ArrowRight className="nav-card-arrow" size={20} />
+            </Link>
+
+            <Link href="/invoices" className="nav-card nav-card-green">
+              <div className="nav-card-icon-wrapper nav-card-icon-green">
+                <History className="nav-card-icon" size={24} />
+              </div>
+              <div className="nav-card-content">
+                <h3 className="nav-card-title">AI History</h3>
+                <p className="nav-card-description">View extraction history</p>
+              </div>
+              <ArrowRight className="nav-card-arrow" size={20} />
+            </Link>
+          </div>
+
+          {/* Recently Uploaded Section */}
+          <div className="recent-uploads-section">
+            <div className="recent-uploads-header">
+              <h2 className="recent-uploads-title">Recently Uploaded</h2>
+              <Link href="/invoices" className="view-all-link">
+                View all <ArrowRight size={16} />
+              </Link>
+            </div>
+
+            <div className="recent-uploads-table-container">
+              <table className="recent-uploads-table">
+                <thead>
+                  <tr>
+                    <th>File Name</th>
+                    <th>Vendor</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {recentInvoices.map((invoice) => (
+                    <tr key={invoice.id} className="recent-uploads-row">
+                      <td>
+                        <div className="file-name-cell">
+                          <FileText className="file-icon" size={18} />
+                          <span>{invoice.fileName}</span>
+                        </div>
+                      </td>
+                      <td>{invoice.vendor}</td>
+                      <td>{invoice.amount}</td>
+                      <td>
+                        <span
+                          className={`status-badge ${
+                            invoice.status === "Paid"
+                              ? "status-paid"
+                              : "status-pending"
+                          }`}
+                        >
+                          {invoice.status}
+                        </span>
+                      </td>
+                      <td>{invoice.date}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -187,4 +334,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default UploadPage;

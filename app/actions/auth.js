@@ -281,7 +281,7 @@ export  async function resetPassword(payload) {
 //[=== End OF Forget Password Cycle ===]
 
 //Logut Function 
-export  async function Logut() {
+export  async function Logout() {
   await deleteSession();
 }
 

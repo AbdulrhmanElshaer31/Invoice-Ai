@@ -147,8 +147,50 @@
 .metric-header {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   margin-bottom: 12px;
+}
+
+.metric-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.metric-icon-wrapper.green {
+  background-color: rgba(34, 197, 94, 0.2);
+}
+
+.metric-icon-wrapper.green .metric-icon {
+  color: #22c55e;
+}
+
+.metric-icon-wrapper.purple {
+  background-color: rgba(168, 85, 247, 0.2);
+}
+
+.metric-icon-wrapper.purple .metric-icon {
+  color: #a855f7;
+}
+
+.metric-icon-wrapper.orange {
+  background-color: rgba(249, 115, 22, 0.2);
+}
+
+.metric-icon-wrapper.orange .metric-icon {
+  color: #f97316;
+}
+
+.metric-icon-wrapper.teal {
+  background-color: rgba(20, 184, 166, 0.2);
+}
+
+.metric-icon-wrapper.teal .metric-icon {
+  color: #14b8a6;
 }
 
 .metric-icon {
@@ -172,6 +214,9 @@
 .metric-change {
   font-size: 14px;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .metric-change.positive {
@@ -257,6 +302,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 300px;
 }
 
 .chart-content.empty {
